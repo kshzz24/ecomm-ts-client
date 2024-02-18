@@ -32,7 +32,7 @@ const Search = () => {
   } = useSearchProductsQuery({ search, sort, category, page, price: maxPrice });
 
   console.log(searchedData);
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const addToCartHandler = (cartItem: CartItem) => {
     if (cartItem.stock < 1) return toast.error("Out of Stock");
     dispatch(addToCart(cartItem));

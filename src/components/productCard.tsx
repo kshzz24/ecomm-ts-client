@@ -10,7 +10,7 @@ type ProductsProp = {
   cartHandler: (cartItem: CartItem) => string | undefined
   infoHandler : () => void;
 };
- const server = import.meta.env.VITE_SERVER;
+
 const ProductCard = ({
   productId,
   price,
@@ -22,7 +22,7 @@ const ProductCard = ({
 }: ProductsProp) => {
   return (
     <div className="product-card">
-      <img src={`${server}/${photo}`} alt="product-id" />
+      <img src={photo} alt="product-id" />
       <p>{name}</p>
       <span>{`₹ ${price}`}</span>
       <div>

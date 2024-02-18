@@ -21,6 +21,18 @@ export const Skeleton = () => {
       <div className="skeleton-shape"></div>
       <div className="skeleton-shape"></div>
       <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
+      <div className="skeleton-shape"></div>
     </div>
   );
 };
