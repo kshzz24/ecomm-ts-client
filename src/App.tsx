@@ -11,8 +11,9 @@ import { auth } from "./firebase";
 import { userExists, userNotExists } from "./redux/reducer/userReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./redux/api/userApi";
-import { userReducerInitialState } from "./types/reducer-types";
+
 import ProtectedRoute from "./components/protected-route";
+import { RootState } from "./redux/store";
 
 
 const Checkout = lazy(()=> import("./pages/checkout"));
@@ -23,6 +24,8 @@ const Search = lazy(() => import("./pages/search"));
 const Cart = lazy(() => import("./pages/cart"));
 const Shipping = lazy(() => import("./pages/shipping"));
 const Orders = lazy(() => import("./pages/orders"));
+const ProductDetails = lazy(()=> import("./pages/productDetails"));
+
 // Admin Routes Importing
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
@@ -44,7 +47,7 @@ const TransactionManagement = lazy(
 
 const App = () => {
 
-const {user,loading} = useSelector((state:{userReducer:userReducerInitialState})=> state.userReducer)
+const {user,loading} = useSelector((state:RootState)=> state.userReducer)
 
    
 const dispatch = useDispatch();
@@ -71,6 +74,7 @@ const dispatch = useDispatch();
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
           {/* ONLY When Not Logged In */}
           
           <Route path="/login" element={

@@ -20,6 +20,11 @@ export type AllProductsResponse = {
   products: Product[];
 };
 
+export type SingleProductResponse = {
+  success: boolean,
+  product: Product
+}
+
 export type CategoriesResponse = {
   success: boolean;
   categories: string[];

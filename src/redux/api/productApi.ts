@@ -10,6 +10,7 @@ import {
   ProductResponse,
   SearchProductsRequest,
   SearchProductsResponse,
+  SingleProductResponse,
   UpdateProductRequest,
 } from "../../types/api-types";
 
@@ -25,8 +26,12 @@ export const productAPI = createApi({
       query: () => "latest",
       providesTags: ["product"],
     }),
+    getSingleProduct: builder.query<SingleProductResponse, string>({  
+        query: (_id) =>  `${_id}`,
+        providesTags: ["product"],
+    }),
     allAdminProdcuts: builder.query<AllProductsResponse, string>({
-      query: (_id) => `admin-products?_id=${_id}`,
+       query: (_id) => `admin-products?_id=${_id}`,
       providesTags: ["product"],
     }),
     categories: builder.query<CategoriesResponse, string>({
@@ -84,6 +89,7 @@ export const {
   useLatestProductsQuery,
   useAllAdminProdcutsQuery,
   useCategoriesQuery,
+  useGetSingleProductQuery,
   useSearchProductsQuery,
   useNewProductMutation,
   useProductDetailsQuery,

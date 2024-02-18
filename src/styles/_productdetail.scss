@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.product-container {
+  @include flex(column, start, start);
+  height: 100vh;
+  width: 100vw;
+  // border: 1px solid brown;
+  margin-top: 50px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.main-container {
+  @include flex(row, space-between, start);
+  // border: 1px solid blue;
+  width: 100vw;
+  height: 600px;
+}
+
+.review-container {
+  // border: 1px solid red;
+  width: 100vw;
+  height: calc(100vh - 600px);
+}
+
+.img-container {
+  flex: 2;
+  
+  margin-left: 150px;
+}
+.product-details {
+   margin-left: 50px;
+  flex: 2;
+}
+span {
+  font-size: 1.1rem;
+  font-weight: lighter;
+}
+img {
+  box-sizing: border-box;
+  height: 600px;
+  width: 600px;
+}
+.product-details {
+  height: 600px;
+  padding: 20px;
+  // border: 1px solid black;
+  @include flex(column, space-between, start);
+}
+.product-description {
+  > p {
+    font-size: 1.1rem;
+    font-weight: lighter;
+  }
+}
+h1 {
+  margin: 10px 0px;
+}
+.in-stock {
+  color: green;
+}
+.out-of-stock {
+  color: red;
+}
+
+.cart-container {
+  height: 200px;
+  width: 800px;
+  @include flex(column, center, start);
+}
+.cart-handler {
+  flex: 1;
+  width: 200px;
+  height: 100px;
+  @include flex(row, start, center);
+  > button {
+    height: 50px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(59, 57, 57);
+    color: white;
+    padding: 5px;
+    > svg {
+      margin: 5px;
+    }
+  }
+  > p {
+    margin: 0 20px;
+  }
+}
+.add-handler {
+    flex: 1;
+  width: 200px;
+  > button {
+    cursor: pointer;
+    height: 50px;
+    width: 165px;
+    border: none;
+    border-radius: 50px;
+    background-color: dimgrey;
+    color: white;
+    font-size: 1.1rem;
+  }
+}
+
+.review-button{
+    height: 100px;
+    > button{
+        cursor: pointer;
+        height: 50px;
+        width: 165px;
+        border: none;
+        border-radius: 50px;
+        background-color: rgb(0, 104, 136);
+        color: white;
+        font-size: 1.1rem;
+    }
+}

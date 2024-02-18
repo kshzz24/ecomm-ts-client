@@ -46,6 +46,7 @@ $color3: rgb(0, 104, 136);
 @import "admin-styles/_chart";
 @import "admin-styles/_dashboardapp";
 @import "admin-styles/_mediaquery";
+@import "_productdetail.scss";
 
 .container {
   max-width: 1367px;
@@ -119,7 +120,6 @@ $color3: rgb(0, 104, 136);
     }
   }
 }
-
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
@@ -289,21 +289,21 @@ $color3: rgb(0, 104, 136);
 .skeleton-loader {
   display: flex;
   flex-direction: column;
-  .skeleton-shape{
-     height: 30px;
-     width: 100%;
-   background-color: #ddd;
-   margin-bottom: 10px;
-   border-radius: 4px;
-   animation: skeleton-loader 1.5s infinite;
+  .skeleton-shape {
+    height: 30px;
+    width: 100%;
+    background-color: #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    animation: skeleton-loader 1.5s infinite;
   }
 }
-.not-found{
+.not-found {
   height: 80vh;
   @include flex(column);
-   >svg{
+  > svg {
     font-size: 4rem;
-   }
+  }
 }
 @keyframes loading-animation {
   to {
