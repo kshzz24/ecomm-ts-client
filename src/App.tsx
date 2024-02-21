@@ -15,16 +15,15 @@ import { getUser } from "./redux/api/userApi";
 import ProtectedRoute from "./components/protected-route";
 import { RootState } from "./redux/store";
 
-
-const Checkout = lazy(()=> import("./pages/checkout"));
-const NotFound = lazy(( )=> import("./pages/not-found"))
+const Checkout = lazy(() => import("./pages/checkout"));
+const NotFound = lazy(() => import("./pages/not-found"));
 const OrderDetails = lazy(() => import("./pages/order-details"));
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
 const Cart = lazy(() => import("./pages/cart"));
 const Shipping = lazy(() => import("./pages/shipping"));
 const Orders = lazy(() => import("./pages/orders"));
-const ProductDetails = lazy(()=> import("./pages/productDetails"));
+const ProductDetails = lazy(() => import("./pages/productDetails"));
 
 // Admin Routes Importing
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -46,27 +45,29 @@ const TransactionManagement = lazy(
 );
 
 const App = () => {
+  const { user, loading } = useSelector(
+    (state: RootState) => state.userReducer
+  );
 
-const {user,loading} = useSelector((state:RootState)=> state.userReducer)
-
-   
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       // agar firebase se login h toh backend se same user ka data fetch
       if (user) {
         const data = await getUser(user.uid);
-        console.log("yeh import",data);
-        
+        console.log("yeh import", data);
+
         dispatch(userExists(data!.user));
       } else {
-        // else remove from store 
-       dispatch(userNotExists());
+        // else remove from store
+        dispatch(userNotExists());
       }
     });
   }, []);
 
-  return loading ? <Loader /> : (
+  return loading ? (
+    <Loader />
+  ) : (
     <Router>
       <Header user={user} />
       <Suspense fallback={<Loader />}>
@@ -76,13 +77,19 @@ const dispatch = useDispatch();
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           {/* ONLY When Not Logged In */}
-          
-          <Route path="/login" element={
-          <ProtectedRoute isAuthenticated = { user ? false: true}>
-             <Login />
-          </ProtectedRoute>} />
+
+          <Route
+            path="/login"
+            element={
+              <ProtectedRoute isAuthenticated={user ? false : true}>
+                <Login />
+              </ProtectedRoute>
+            }
+          />
           {/* Logged In User Routea */}
-          <Route element ={<ProtectedRoute isAuthenticated = { user ? true : false} />}>
+          <Route
+            element={<ProtectedRoute isAuthenticated={user ? true : false} />}
+          >
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
@@ -91,9 +98,13 @@ const dispatch = useDispatch();
 
           {/* Admin */}
           <Route
-          element={
-            <ProtectedRoute isAuthenticated={true} adminRoute={true} isAdmin={user?.role === "admin"} />
-          }
+            element={
+              <ProtectedRoute
+                isAuthenticated={true}
+                adminRoute={true}
+                isAdmin={user?.role === "admin"}
+              />
+            }
           >
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/product" element={<Products />} />
@@ -116,7 +127,7 @@ const dispatch = useDispatch();
               element={<TransactionManagement />}
             />
           </Route>
-            <Route path="*" element={<NotFound />}  />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       <Toaster position="bottom-center" />
