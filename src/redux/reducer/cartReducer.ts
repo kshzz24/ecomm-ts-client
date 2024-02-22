@@ -28,7 +28,7 @@ export const cartReducer = createSlice({
      const index = state.cartItems.findIndex(i=> i.productId === action.payload.productId);
       if(index!==-1) {
         // state.cartItems[index] = action.payload;
-        state.cartItems[index].quantity = action.payload.quantity;
+        state.cartItems[index] = action.payload;
       }
       else{
       state.cartItems.push(action.payload);
