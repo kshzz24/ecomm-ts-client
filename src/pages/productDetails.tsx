@@ -129,14 +129,9 @@ const ProductDetails = () => {
               
               </>
             )}
-          <div className="review-button">
-              <button onClick={addReviewHandler}>Submit Review</button>
-            </div>
-          </div>
+         
         </section>
-        <section className="review-container">
-          <div>Review Section</div>
-        </section>
+        
         </>
             )
          }
