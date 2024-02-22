@@ -1,4 +1,4 @@
-import { Bar, CartItem, Line, Order, Pie, Product, ShippingInfoType, Stats, User } from "./types";
+import { Bar, CartItem, Line, Order, Pie, Product, Review, ShippingInfoType, Stats, User } from "./types";
 
 export type MessageResponse = {
   success: boolean;
@@ -42,6 +42,8 @@ export type SearchProductsResponse = {
   products: Product[];
   totalPage: number;
 };
+
+
 
 export type SearchProductsRequest = {
   price: number;
@@ -101,6 +103,23 @@ export type DeleteProductRequest = {
   userId: string;
   productId: string;
 };
+
+export type ReviewFormData = {
+   success:boolean;
+   reviews:Review[]
+}
+
+export type AddNewReviewResponse = {
+  productId: string;
+  userId: string;
+  comment:string;
+  rating: number;
+}
+
+export type DeleteReviewResponse ={
+    productId:string,
+    userId:string;
+}
 
 export type NewOrderRequest = {
   orderItems: CartItem[];

@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  overflow: hidden;
 }
 .product-container {
   @include flex(column, start, start);
@@ -9,7 +8,6 @@
   // border: 1px solid brown;
   margin-top: 50px;
   padding: 0;
-  overflow: hidden;
 }
 
 .main-container {
@@ -27,11 +25,11 @@
 
 .img-container {
   flex: 2;
-  
+
   margin-left: 150px;
 }
 .product-details {
-   margin-left: 50px;
+  margin-left: 50px;
   flex: 2;
 }
 span {
@@ -93,7 +91,7 @@ h1 {
   }
 }
 .add-handler {
-    flex: 1;
+  flex: 1;
   width: 200px;
   > button {
     cursor: pointer;
@@ -107,16 +105,112 @@ h1 {
   }
 }
 
-.review-button{
-    height: 100px;
-    > button{
-        cursor: pointer;
-        height: 50px;
-        width: 165px;
-        border: none;
-        border-radius: 50px;
-        background-color: rgb(0, 104, 136);
-        color: white;
-        font-size: 1.1rem;
-    }
+.review-button {
+  height: 100px;
+  > button {
+    cursor: pointer;
+    height: 54px;
+    width: 235px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(0, 104, 136);
+    color: white;
+    font-size: 23px;
+  }
+}
+.submitReview {
+  border: none;
+  background-color: tomato;
+  font: 500 0.7vmax "Roboto";
+  border-radius: 20px;
+  padding: 0.6vmax 2vmax;
+  margin: 1vmax 0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+}
+.submitReview:hover {
+  background-color: rgb(197, 68, 45);
+  transform: scale(1.1);
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);
+  margin: 25px;
+  position: relative;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-height: 358px;
+  width: 652px;
+}
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+.submitDialogTextArea {
+  border: 1px solid rgba(0, 0, 0, 0.082);
+  margin: 1vmax 0;
+  outline: none;
+  padding: 1rem;
+  font: 300 1rem "Roboto";
+}
+
+.reviewsHeading {
+  color: #000000be;
+  font: 500 1.4vmax "Roboto";
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+  padding: 1vmax;
+  width: 20vmax;
+  margin: auto;
+  margin-bottom: 4vmax;
+}
+.reviews {
+  display: flex;
+  overflow: auto;
+}
+
+.reviewCard {
+  flex: none;
+  width: 33%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+  border: 1px solid rgba(56, 56, 56, 0.116);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1vmax;
+  padding: 3vmax;
+  height: 300px;
+}
+.reviewImg  {
+  width: 50px;
+  height: 50px;
+}
+.reviewCard > p {
+  color: rgba(0, 0, 0, 0.836);
+  font: 600 0.9vmax "Roboto";
+  margin: 20px;
+}
+.reviewCardComment {
+  color: rgba(0, 0, 0, 0.445);
+  font: 300 0.8vmax cursive;
+  margin: 10px;
+}
+
+.noReviews {
+  font: 400 1.3vmax "Gill Sans";
+  text-align: center;
+  color: rgba(0, 0, 0, 0.548);
 }

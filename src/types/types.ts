@@ -8,6 +8,14 @@ export type User = {
   dob: string;
 };
 
+export type Review = {
+  user: string;
+  name: string;
+  comment: string;
+  rating: number;
+  _id:string;
+};
+
 export type Product = {
   name: string;
   photo: string;
@@ -15,6 +23,9 @@ export type Product = {
   stock: number;
   category: string;
   _id: string;
+  totalReviews: number;
+  reviews: Review[];
+  ratings: number;
 };
 
 export type ShippingInfoType = {

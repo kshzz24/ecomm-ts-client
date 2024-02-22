@@ -26,12 +26,12 @@ export const productAPI = createApi({
       query: () => "latest",
       providesTags: ["product"],
     }),
-    getSingleProduct: builder.query<SingleProductResponse, string>({  
-        query: (_id) =>  `${_id}`,
-        providesTags: ["product"],
+    getSingleProduct: builder.query<SingleProductResponse, string>({
+      query: (_id) => `${_id}`,
+      providesTags: ["product"],
     }),
     allAdminProdcuts: builder.query<AllProductsResponse, string>({
-       query: (_id) => `admin-products?_id=${_id}`,
+      query: (_id) => `admin-products?_id=${_id}`,
       providesTags: ["product"],
     }),
     categories: builder.query<CategoriesResponse, string>({
@@ -64,7 +64,7 @@ export const productAPI = createApi({
       invalidatesTags: ["product"],
     }),
     updateProduct: builder.mutation<MessageResponse, UpdateProductRequest>({
-      query: ({ formData, userId,  productId}) => ({
+      query: ({ formData, userId, productId }) => ({
         url: `${productId}?_id=${userId}`,
         method: "PUT",
         body: formData,
@@ -73,10 +73,9 @@ export const productAPI = createApi({
     }),
 
     deleteProduct: builder.mutation<MessageResponse, DeleteProductRequest>({
-      query: ({  userId,  productId}) => ({
+      query: ({ userId, productId }) => ({
         url: `${productId}?_id=${userId}`,
         method: "DELETE",
- 
       }),
       invalidatesTags: ["product"],
     }),
