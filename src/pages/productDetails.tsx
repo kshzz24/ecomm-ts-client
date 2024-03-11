@@ -76,11 +76,11 @@ const ProductDetails = () => {
 
               <div className="product-buy">
                 <h1> ₹{data?.product.price}</h1>
-                <b className={stock > 0 ? "in-stock" : " out-of-stock"}>
+                <b className={data?.product.stock! > 0 ? "in-stock" : " out-of-stock"}>
                   {stock > 0 ? "In Stock" : "Out Of Stock"}
                 </b>
               </div>
-              {stock > 0 ? (
+              {data?.product.stock! > 0 ? (
                 <div className="cart-container">
                   <div className="cart-handler">
                     <button onClick={decrementHandler}>
