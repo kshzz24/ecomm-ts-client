@@ -91,8 +91,9 @@ const ProductDetails = () => {
                       <FaPlus />
                     </button>
                   </div>
-                  <div className="add-handler">
-                    <button disabled={(data?.product.stock! > 0) ? true : false}
+                  {data?.product.stock! > 0 ? (
+                    <div className="add-handler">
+                    <button 
                       onClick={() =>
                         addToCartHandler({
                           productId: data?.product._id!,
@@ -107,6 +108,10 @@ const ProductDetails = () => {
                       Add to Cart
                     </button>
                   </div>
+                  ) : (
+                    <button> Not Available </button>
+                  )}
+                  
                 </div>
              
             </div>
