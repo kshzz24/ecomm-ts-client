@@ -28,7 +28,6 @@ export const productAPI = createApi({
     }),
     getSingleProduct: builder.query<SingleProductResponse, string>({
       query: (_id) => `${_id}`,
-      providesTags: ["product"],
     }),
     allAdminProdcuts: builder.query<AllProductsResponse, string>({
       query: (_id) => `admin-products?_id=${_id}`,
