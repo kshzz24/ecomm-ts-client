@@ -82,7 +82,10 @@ const ProductDetails = () => {
               </div>
             
                 <div className="cart-container">
-                  <div className="cart-handler">
+                  {
+                    data?.product.stock! > 0 ? (
+                      <>
+                            <div className="cart-handler">
                     <button onClick={decrementHandler}>
                       <FaMinus />
                     </button>
@@ -91,7 +94,7 @@ const ProductDetails = () => {
                       <FaPlus />
                     </button>
                   </div>
-                  {data?.product.stock! > 0 ? (
+                
                     <div className="add-handler">
                     <button 
                       onClick={() =>
@@ -108,9 +111,12 @@ const ProductDetails = () => {
                       Add to Cart
                     </button>
                   </div>
-                  ) : (
-                    <button> Not Available </button>
-                  )}
+                      </>
+                    ): (
+                      <h1 style={{color:"red"}}> Not Avaliable</h1>
+                    )
+                  }
+            
                   
                 </div>
              
