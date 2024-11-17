@@ -15,6 +15,7 @@ import { getUser } from "./redux/api/userApi";
 import ProtectedRoute from "./components/protected-route";
 import { RootState } from "./redux/store";
 
+
 const Checkout = lazy(() => import("./pages/checkout"));
 const NotFound = lazy(() => import("./pages/not-found"));
 const OrderDetails = lazy(() => import("./pages/order-details"));
@@ -30,6 +31,7 @@ const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
 const Customers = lazy(() => import("./pages/admin/customers"));
 const Transaction = lazy(() => import("./pages/admin/transaction"));
+const Discount = lazy(() => import("./pages/admin/discount"));
 const Barcharts = lazy(() => import("./pages/admin/charts/barcharts"));
 const Piecharts = lazy(() => import("./pages/admin/charts/piecharts"));
 const Linecharts = lazy(() => import("./pages/admin/charts/linecharts"));
@@ -42,6 +44,12 @@ const ProductManagement = lazy(
 );
 const TransactionManagement = lazy(
   () => import("./pages/admin/management/transactionmanagement")
+);
+const NewDiscount = lazy(
+  () => import("./pages/admin/management/newdiscount")
+);
+const DiscountManagement = lazy(
+  () => import("./pages/admin/management/discountmanagement")
 );
 
 const App = () => {
@@ -76,6 +84,8 @@ const App = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/search/product/:id" element={<ProductDetails />} />
+
           {/* ONLY When Not Logged In */}
 
           <Route
@@ -110,6 +120,7 @@ const App = () => {
             <Route path="/admin/product" element={<Products />} />
             <Route path="/admin/customer" element={<Customers />} />
             <Route path="/admin/transaction" element={<Transaction />} />
+            <Route path="/admin/discount" element={<Discount />} />
             {/* Charts */}
             <Route path="/admin/chart/bar" element={<Barcharts />} />
             <Route path="/admin/chart/pie" element={<Piecharts />} />
@@ -125,6 +136,14 @@ const App = () => {
             <Route
               path="/admin/transaction/:id"
               element={<TransactionManagement />}
+            />
+                <Route
+              path="/admin/discount/new"
+              element={<NewDiscount />}
+            />
+              <Route
+              path="/admin/discount/:id"
+              element={<DiscountManagement />}
             />
           </Route>
           <Route path="*" element={<NotFound />} />

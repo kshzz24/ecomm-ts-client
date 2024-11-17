@@ -19,6 +19,13 @@ a {
   color: black;
 }
 
+button {
+  &:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+  }
+}
+
 $color1: white;
 $color2: rgb(46, 46, 46);
 $color3: rgb(0, 104, 136);
@@ -33,20 +40,19 @@ $color3: rgb(0, 104, 136);
   color: rgb(0, 195, 0);
 }
 
-@import "admin-styles/_mixin";
-
-@import "_home";
-@import "_cart";
-@import "_shipping";
-@import "_login";
-@import "_loader.scss";
-@import "_search";
-@import "admin-styles/_dashboard";
-@import "admin-styles/_products";
-@import "admin-styles/_chart";
-@import "admin-styles/_dashboardapp";
-@import "admin-styles/_mediaquery";
-@import "_productdetail.scss";
+@import "admin-styles/mixin";
+@import "home";
+@import "cart";
+@import "shipping";
+@import "login";
+@import "search";
+@import "productdetail";
+@import "footer";
+@import "admin-styles/dashboard";
+@import "admin-styles/products";
+@import "admin-styles/chart";
+@import "admin-styles/dashboardapp";
+@import "admin-styles/mediaquery";
 
 .container {
   max-width: 1367px;
@@ -68,11 +74,12 @@ $color3: rgb(0, 104, 136);
 
 .header {
   @include flex(row, flex-end, stretch, 1.2rem);
-  padding: 1.1rem;
+  padding: 1rem;
   a {
     color: $color2;
     letter-spacing: 2px;
     font-size: 1.2rem;
+
     &:hover {
       color: $color3;
     }
@@ -87,32 +94,41 @@ $color3: rgb(0, 104, 136);
       color: $color3;
     }
   }
+
   dialog {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
+    width: 100px;
     position: absolute;
     left: calc(100% - 100px);
-    top: 5%;
+    top: 8%;
     > div {
       @include flex(column, flex-start, center, 0.25rem);
     }
   }
 }
 
-.heading {
-  @include heading;
-  margin: 1rem 0;
-  text-align: center;
+.not-found {
+  height: 80vh;
+  @include flex(column);
+  > svg {
+    font-size: 5rem;
+  }
 }
 
 .checkout-container {
-  max-width: 400px;
+  height: 80vh;
   width: 100%;
   margin: auto;
+  @include flex;
+
   > form {
     @include flex(column, flex-start, stretch, 2rem);
-
+    max-width: 400px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    padding: 4rem;
+    border-radius: 6px;
     > button {
       @include btn(1rem, $color3, $color1);
       width: 100%;
@@ -163,8 +179,8 @@ $color3: rgb(0, 104, 136);
   width: 100%;
   th,
   td {
-    padding: 15px;
-    text-align: center;
+    padding: 8px;
+    text-align: left;
     vertical-align: middle;
   }
 
@@ -182,7 +198,6 @@ $color3: rgb(0, 104, 136);
     }
 
     td {
-      font-size: 20px;
       padding: 1rem;
 
       img {
@@ -273,7 +288,7 @@ $color3: rgb(0, 104, 136);
 
 .loader {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   @include flex;
   > div {
     @include square(10rem);
@@ -289,22 +304,17 @@ $color3: rgb(0, 104, 136);
 .skeleton-loader {
   display: flex;
   flex-direction: column;
-  .skeleton-shape {
-    height: 30px;
-    width: 100%;
-    background-color: #ddd;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    animation: skeleton-loader 1.5s infinite;
-  }
 }
-.not-found {
-  height: 80vh;
-  @include flex(column);
-  > svg {
-    font-size: 4rem;
-  }
+
+.skeleton-shape {
+  height: 30px;
+  width: 100%;
+  background-color: #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  animation: skeleon-loading 1.5s infinite;
 }
+
 @keyframes loading-animation {
   to {
     transform: rotateZ(360deg);
@@ -316,7 +326,7 @@ $color3: rgb(0, 104, 136);
   }
 }
 
-@keyframes skeleton-loader {
+@keyframes skeleon-loading {
   0% {
     opacity: 0.6;
   }

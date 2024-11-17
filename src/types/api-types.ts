@@ -1,4 +1,16 @@
-import { Bar, CartItem, Line, Order, Pie, Product, Review, ShippingInfoType, Stats, User } from "./types";
+import {
+  Bar,
+  CartItem,
+  CouponType,
+  Line,
+  Order,
+  Pie,
+  Product,
+  Review,
+  ShippingInfoType,
+  Stats,
+  User,
+} from "./types";
 
 export type MessageResponse = {
   success: boolean;
@@ -8,6 +20,10 @@ export type MessageResponse = {
 export type AllUsersResponse = {
   success: boolean;
   users: User[];
+};
+export type AllReviewsResponse = {
+  success: boolean;
+  reviews: Review[];
 };
 
 export type UserResponse = {
@@ -21,9 +37,9 @@ export type AllProductsResponse = {
 };
 
 export type SingleProductResponse = {
-  success: boolean,
-  product: Product
-}
+  success: boolean;
+  product: Product;
+};
 
 export type CategoriesResponse = {
   success: boolean;
@@ -42,8 +58,6 @@ export type SearchProductsResponse = {
   products: Product[];
   totalPage: number;
 };
-
-
 
 export type SearchProductsRequest = {
   price: number;
@@ -69,24 +83,24 @@ export type OrderDetailResponse = {
 };
 
 export type StatsResponse = {
-  success: boolean,
-  stats: Stats
-}
+  success: boolean;
+  stats: Stats;
+};
 
 export type PieResponse = {
   success: boolean;
-  charts: Pie,
-}
+  charts: Pie;
+};
 
 export type BarResponse = {
   success: boolean;
-  charts: Bar,
-}
+  charts: Bar;
+};
 
 export type LineResponse = {
   success: boolean;
-  charts: Line,
-}
+  charts: Line;
+};
 
 export type NewProductRequest = {
   _id: string;
@@ -105,21 +119,31 @@ export type DeleteProductRequest = {
 };
 
 export type ReviewFormData = {
-   success:boolean;
-   reviews:Review[]
-}
+  success: boolean;
+  reviews: Review[];
+};
+export type NewReviewRequest = {
+  rating: number;
+  comment: string;
+  userId?: string;
+  productId: string;
+};
 
+export type DeleteReviewRequest = {
+  userId?: string;
+  reviewId: string;
+};
 export type AddNewReviewResponse = {
   productId: string;
   userId: string;
-  comment:string;
+  comment: string;
   rating: number;
-}
+};
 
-export type DeleteReviewResponse ={
-    productId:string,
-    userId:string;
-}
+export type DeleteReviewResponse = {
+  productId: string;
+  userId: string;
+};
 
 export type NewOrderRequest = {
   orderItems: CartItem[];
@@ -137,8 +161,16 @@ export type UpdateOrderRequest = {
   orderId: string;
 };
 
-
 export type DeleteUserRequest = {
   userId: string;
   adminUserId: string;
+};
+
+export type AllDiscountResponse = {
+  success: boolean;
+  coupons: CouponType[];
+};
+export type SingleDiscountResponse = {
+  success: boolean;
+  coupon: CouponType;
 };

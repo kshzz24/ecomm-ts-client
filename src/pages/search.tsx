@@ -10,6 +10,7 @@ import { Skeleton } from "../components/loader";
 import { addToCart } from "../redux/reducer/cartReducer";
 import { useDispatch } from "react-redux";
 import { CartItem } from "../types/types";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const {
@@ -23,7 +24,7 @@ const Search = () => {
   const [maxPrice, setMaxPrice] = useState(200000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
-
+  const navigate = useNavigate();
   const {
     isLoading: productLoading,
     data: searchedData,
@@ -38,7 +39,9 @@ const Search = () => {
     dispatch(addToCart(cartItem));
     toast.success("Item Added To Cart");
   };
-  const getInfoHandler = () => {};
+  const getInfoHandler = (id) => {
+    return navigate(`product/${id}`);
+  };
   const isNextPage = page < 4;
   const isPrevPage = page > 1;
 
@@ -102,7 +105,7 @@ const Search = () => {
           <Skeleton />
         ) : (
           <div className="search-product-list">
-            {searchedData?.products.map((product, idx) => (
+            {searchedData?.products?.map((product, idx) => (
               <ProductCard
                 key={idx}
                 productId={product._id}
@@ -110,8 +113,8 @@ const Search = () => {
                 price={product.price}
                 stock={product.stock}
                 cartHandler={addToCartHandler}
-                infoHandler={getInfoHandler}
-                photo={product.photo}
+                infoHandler={() => getInfoHandler(product._id)}
+                photos={product.photos}
               />
             ))}
           </div>

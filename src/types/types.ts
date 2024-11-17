@@ -8,25 +8,34 @@ export type User = {
   dob: string;
 };
 
-export type Review = {
-  user: string;
-  name: string;
-  comment: string;
-  rating: number;
-  _id:string;
-};
 
 export type Product = {
   name: string;
-  photo: string;
+  photos: {
+    public_id: string;
+    url: string;
+  }[];
   price: number;
   stock: number;
   category: string;
   _id: string;
-  totalReviews: number;
-  reviews: Review[];
-  ratings: number;
+  rating: number;
+  numOfReviews: number;
+  description: string;
 };
+
+export type Review = {
+  rating: number;
+  comment: string;
+  product: string;
+  user: {
+    name: string;
+    photo: string;
+    _id: string;
+  };
+  _id: string;
+};
+
 
 export type ShippingInfoType = {
   address: string;
@@ -35,6 +44,7 @@ export type ShippingInfoType = {
   country: string;
   pinCode: number;
 };
+
 
 export type CartItem = {
   productId: string;
@@ -143,4 +153,9 @@ export type Line = {
   products: number[];
   discount: number[];
   revenue: number[];
+};
+export type CouponType = {
+  code: string;
+  amount: number;
+  _id: string;
 };
