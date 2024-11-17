@@ -39,7 +39,7 @@ const Search = () => {
     dispatch(addToCart(cartItem));
     toast.success("Item Added To Cart");
   };
-  const getInfoHandler = (id) => {
+  const getInfoHandler = (id: unknown) => {
     return navigate(`product/${id}`);
   };
   const isNextPage = page < 4;
